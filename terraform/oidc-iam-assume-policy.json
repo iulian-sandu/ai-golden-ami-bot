@@ -9,7 +9,7 @@
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
                 "StringLike": {
-                    "token.actions.githubusercontent.com:sub": "repo:github.com/iulian-sandu/ai-golden-ami-bot:*"
+                    "token.actions.githubusercontent.com:sub": "repo:iulian-sandu/ai-golden-ami-bot:*"
                 },
                 "StringEquals": {
                     "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
