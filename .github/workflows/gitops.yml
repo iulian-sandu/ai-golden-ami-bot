@@ -14,6 +14,10 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          
       - uses: aws-actions/configure-aws-credentials@v4.1.0
         with:
           aws-region: "eu-central-1"
