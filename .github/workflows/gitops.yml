@@ -1,0 +1,29 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - 'main'
+
+permissions:
+  id-token: write
+  contents: read 
+
+name: iac-gitops-terraform
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          
+      - uses: aws-actions/configure-aws-credentials@v4.1.0
+        with:
+          aws-region: "eu-central-1"
+          role-to-assume: "arn:aws:iam::050451357127:role/github-oidc-assume-iac-role"
+
+      - uses: hashicorp/setup-terraform@v3
+
+      - run: terraform init
+        working-directory: terraform
