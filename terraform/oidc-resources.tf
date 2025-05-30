@@ -6,7 +6,7 @@ resource "aws_iam_openid_connect_provider" "default" {
 resource "aws_iam_role" "github" {
   name = "github-oidc-assume-iac-role"
 
-  assume_role_policy = file("oidc-iam-assume-policy.json")
+  assume_role_policy = file("oidc-policy.json")
 
   tags = {
     tag-key = "tag-value"

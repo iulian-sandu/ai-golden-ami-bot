@@ -1,8 +1,6 @@
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    paths:
-      - 'terraform/**'
     branches:
       - 'main'
 
@@ -24,7 +22,4 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
 
       - run: terraform init
-        working-directory: terraform
-
-      - run: terraform plan
         working-directory: terraform
