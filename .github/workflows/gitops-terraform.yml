@@ -16,9 +16,8 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: aws-actions/configure-aws-credentials@v4.1.0
-        with:
-          aws-region: "eu-central-1"
-          role-to-assume: "arn:aws:iam::050451357127:role/github-oidc-assume-iac-role"
-
       - run: terraform version
+      # - uses: aws-actions/configure-aws-credentials@v4.1.0
+      #   with:
+      #     aws-region: "eu-central-1"
+      #     role-to-assume: "arn:aws:iam::050451357127:role/github-oidc-assume-iac-role"
