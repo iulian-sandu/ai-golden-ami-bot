@@ -1,7 +1,10 @@
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize, reopened]
     paths:
       - 'terraform/**'
+    branches:
+      - 'main'
 
 permissions:
   id-token: write
@@ -17,3 +20,5 @@ jobs:
         with:
           aws-region: "eu-central-1"
           role-to-assume: "arn:aws:iam::050451357127:role/github-oidc-assume-iac-role"
+
+      - run: terraform version
